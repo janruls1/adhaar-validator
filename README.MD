@@ -1,12 +1,12 @@
-##Validators
+## Validators
 `valid_aadhaar_no` - checks for Verhoeff  
 `valid_aadhaar_xml` - checks for adhaar xml digest and signature varification from supplied crt file in config
 
-###Usage
+### Usage
 `'adhaar_no' => 'bail|required|valid_aadhaar_no'`,  
 `'adhaar_data' => 'bail|required|valid_aadhaar_xml'`,
 
-##Methonds
+## Methonds
 `AdhaarValidator::_validateAdhaarXml(string $xml):bool` -- same as `valid_aadhaar_xml` validator  
 `AdhaarValidator::_validateAdhaarNo(string $adhaar_no):bool` -- same as `valid_aadhaar_no` validator 
 
@@ -28,7 +28,7 @@
 `validateAdhaarEmailId(string $email): bool` -- Validates given email against the email attached with supplied adhaar XML
 
 
-##Usage
+## Usage
 
 ```php
 $adhaarValidator = new AdhaarValidator($xml, $share_code);
