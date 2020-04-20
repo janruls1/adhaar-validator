@@ -1,7 +1,7 @@
 {
     "name": "janruls1/adhaar-validator",
     "license": "",
-    "description": "Package to validate offline adhaar no, xml signatutre and digest with Laravel/Lumen 7.x support",
+    "description": "Package to validate offline Adhaar no, xml signature and digest with Laravel/Lumen 7.x support",
     "authors": [
         {
             "name": "janruls1",
