@@ -1,0 +1,29 @@
+{
+    "name": "janruls1/adhaar-validator",
+    "license": "",
+    "description": "Package to validate offline adhaar no, xml signatutre and digest with Laravel/Lumen 7.x support",
+    "authors": [
+        {
+            "name": "janruls1",
+            "email": "janruls1@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7",
+        "ext-simplexml": "*",
+        "ext-openssl": "*",
+        "ext-dom": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "janruls1\\AdhaarValidator\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "janruls1\\AdhaarValidator\\AdhaarValidatorServiceProvider"
+            ]
+        }
+    }
+}
