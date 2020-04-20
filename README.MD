@@ -6,7 +6,7 @@
 `'adhaar_no' => 'bail|required|valid_aadhaar_no'`,  
 `'adhaar_data' => 'bail|required|valid_aadhaar_xml'`,
 
-## Methonds
+## Methods
 `AdhaarValidator::_validateAdhaarXml(string $xml):bool` -- same as `valid_aadhaar_xml` validator  
 `AdhaarValidator::_validateAdhaarNo(string $adhaar_no):bool` -- same as `valid_aadhaar_no` validator 
 
