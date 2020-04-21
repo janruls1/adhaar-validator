@@ -69,7 +69,7 @@ class AdhaarValidator
             $result[$key] = (string)$value;
         }
 
-        $this->adhaarInfo[$node->getName()] = $result;
+        $this->adhaarInfo[strtolower($node->getName())] = $result;
 
         return $this;
     }
@@ -106,7 +106,7 @@ class AdhaarValidator
 
         $this->adhaarRefNo = (string)$xml->attributes()['referenceId'];
 
-        $this->adhaarInfo['info'] = [
+        $this->adhaarInfo['meta'] = [
             'lastAdhaarDigits' => substr($this->adhaarRefNo, 0, 4),
             'adhaarGeneratedAt' => Carbon::createFromFormat("YmdHisv", substr($this->adhaarRefNo, 4, -1))
         ];
@@ -124,7 +124,7 @@ class AdhaarValidator
         if (!$this->share_code) {
             throw new RuntimeException('No share code provided');
         }
-        return $this->adhaarInfo['Poi']['m'] === $this->getIteratedHash((int)$this->adhaarInfo['info']['lastAdhaarDigits'][3], $mobile_no.$this->share_code);
+        return $this->adhaarInfo['poi']['m'] === $this->getIteratedHash((int)$this->adhaarInfo['meta']['lastAdhaarDigits'][3], $mobile_no.$this->share_code);
     }
 
     public function validateAdhaarEmailId (string $email): bool
@@ -133,13 +133,13 @@ class AdhaarValidator
             throw new RuntimeException('No share code provided');
         }
 
-        $adhaar_email = $this->adhaarInfo['Poi']['e'];
+        $adhaar_email = $this->adhaarInfo['poi']['e'];
         // For cases where email is not attached to adhaar
         if ($adhaar_email === '')
         {
             return true;
         }
-        return $adhaar_email === $this->getIteratedHash((int)$this->adhaarInfo['info']['lastAdhaarDigits'][3], $email.$this->share_code);
+        return $adhaar_email === $this->getIteratedHash((int)$this->adhaarInfo['meta']['lastAdhaarDigits'][3], $email.$this->share_code);
     }
 
     public function validateAdhaarXml (): bool
