@@ -108,7 +108,7 @@ class AdhaarValidator
 
         $this->adhaarInfo['meta'] = [
             'lastAdhaarDigits' => substr($this->adhaarRefNo, 0, 4),
-            'adhaarGeneratedAt' => Carbon::createFromFormat("YmdHisv", substr($this->adhaarRefNo, 4, -1))
+            'adhaarGeneratedAt' => Carbon::createFromFormat("YmdHisv", substr($this->adhaarRefNo, 4, -1))->roundSecond()
         ];
 
         return $this;
