@@ -24,7 +24,7 @@ class AdhaarValidatorServiceProvider extends ServiceProvider
         );
         
         Validator::extend('valid_aadhaar_xml_file', function($attribute, $value){
-            return app('aadhaarValidator')::_validateAdhaarNo(File::get($value->getRealPath()));
+            return app('aadhaarValidator')::_validateAdhaarXml(File::get($value->getRealPath()));
         });
 
         Validator::extend('valid_aadhaar_no', function($attribute, $value){
