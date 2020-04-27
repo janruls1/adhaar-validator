@@ -4,6 +4,7 @@ namespace janruls1\AdhaarValidator;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\File;
 
 class AdhaarValidatorServiceProvider extends ServiceProvider
 {
@@ -21,6 +22,10 @@ class AdhaarValidatorServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/config/adhaar-validator.php', 'adhaar-validator'
         );
+        
+        Validator::extend('valid_aadhaar_xml_file', function($attribute, $value){
+            return app('aadhaarValidator')::_validateAdhaarNo(File::get($value->getRealPath()));
+        });
 
         Validator::extend('valid_aadhaar_no', function($attribute, $value){
             return app('aadhaarValidator')::_validateAdhaarNo($value);
